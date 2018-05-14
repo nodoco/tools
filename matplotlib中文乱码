@@ -1,0 +1,18 @@
+1. 下载中文字体simhei.ttf, 网址为http://fontzone.net/download/simhei 
+2. 搜索 matplotlib 字体的安装位置
+  $locate -b '\mpl-data'
+  会得到 这个路径/usr/share/matplotlib/mpl-data下面有fonts/ttf这个目录，进入这个目录，把刚才下载的simhei.ttf 字体复制到这个目录下，注意权限和归属是否与其它字体一致，我的是归于root用户的，所以用root 用户复制过来。 
+3. 删除当前用户matplotlib 的缓冲文件（如果没有直接进入第四步）
+  $cd ~/.cache/matplotlib
+  $rm -rf *.*
+4.代码中调整字体
+
+#!/usr/bin/env python
+#coding:utf-8
+"""a demo of matplotlib"""
+import matplotlib as  mpl
+from matplotlib  import pyplot as plt
+mpl.rcParams[u'font.sans-serif'] = ['simhei']
+mpl.rcParams['axes.unicode_minus'] = False
+
+来自：https://blog.csdn.net/jeff_liu_sky_/article/details/54023745，
